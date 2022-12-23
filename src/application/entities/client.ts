@@ -12,16 +12,20 @@ abstract class ClientProps {
 }
 
 // find how to get optional props
-export class Client {
-  private props: ClientProps;
+export class Client extends ClientProps {
   private _id: string;
+  private props: ClientProps;
 
   constructor(props: Replace<ClientProps, { createdAt?: Date }>, id?: string) {
+    super();
+    this._id = id ?? randomUUID();
     this.props = {
       ...props,
       createdAt: new Date(),
     };
+  }
 
-    this._id = id ?? randomUUID();
+  public get id(): string {
+    return this._id;
   }
 }
