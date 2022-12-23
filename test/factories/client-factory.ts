@@ -1,5 +1,5 @@
 import { ClientProps } from 'src/application/entities/abstract-client';
-import { Client } from 'src/application/entities/client';
+import { Client } from '../../src/application/entities/client';
 
 type Override = Partial<ClientProps>;
 
