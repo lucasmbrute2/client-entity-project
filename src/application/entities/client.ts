@@ -1,17 +1,7 @@
 import { randomUUID } from 'node:crypto';
 import { Replace } from 'src/helpers/Replace';
+import { ClientProps } from './abstract-client';
 
-abstract class ClientProps {
-  username: string;
-  password: string;
-  firstName: string;
-  lastName: string;
-  phone: string;
-  createdAt?: Date;
-  modifiedAt?: Date | null;
-}
-
-// find how to get optional props
 export class Client extends ClientProps {
   private _id: string;
   private props: ClientProps;
