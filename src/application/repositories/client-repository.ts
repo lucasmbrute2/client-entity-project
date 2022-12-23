@@ -1,5 +1,5 @@
-import { ClientCreateDTO } from '../../infra/dtos/client-create-dto';
+import { Client } from '../entities/client';
 
 export interface IClientRepository {
-  create(data: ClientCreateDTO): Promise<void>;
+  create(data: Client): Promise<void>;
 }
