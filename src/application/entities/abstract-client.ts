@@ -1,9 +1,9 @@
 export abstract class ClientProps {
-  username: string;
-  password: string;
-  firstName: string;
-  lastName: string;
-  phone: string;
-  createdAt?: Date;
-  modifiedAt?: Date | null;
+  public username: string;
+  public password: string;
+  public firstName: string;
+  public lastName: string;
+  public phone: string;
+  public createdAt?: Date;
+  public modifiedAt?: Date | null;
 }

@@ -2,30 +2,29 @@ import { randomUUID } from 'node:crypto';
 import { Replace } from 'src/helpers/Replace';
 import { ClientProps } from './abstract-client';
 
-interface props {
-  username: string;
-  password: string;
-  firstName: string;
-  lastName: string;
-  phone: string;
-  createdAt?: Date;
-  modifiedAt?: Date | null;
-}
-
 export class Client extends ClientProps {
   private _id: string;
-  private props: props;
 
-  constructor(props: Replace<props, { createdAt?: Date }>, id?: string) {
+  constructor(props: Replace<ClientProps, { createdAt?: Date }>, id?: string) {
     super();
     this._id = id ?? randomUUID();
-    this.props = {
-      ...props,
-      createdAt: new Date(),
-    };
+    this.createdAt = this.createdAt ?? new Date();
+    this.firstName = props.firstName;
+    this.lastName = props.lastName;
+    this.password = props.password;
+    this.phone = props.phone;
+    this.username = props.username;
   }
 
   public get id(): string {
     return this._id;
+  }
+
+  public set _modifiedAt(modifiedAt: Date) {
+    this.modifiedAt = modifiedAt;
+  }
+
+  public get _modifiedAt(): Date {
+    return this.modifiedAt;
   }
 }
