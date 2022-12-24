@@ -24,5 +24,13 @@ describe('Client creation', () => {
     expect(clientRepository.clients).toHaveLength(olderLength + 1);
   });
 
-  it('should not be able to create a user with differents passwords', async () => {});
+  it('should not be able to create a user with differents passwords', async () => {
+    expect(() => {
+      const client = makeClient();
+      return clientCreateUseCase.execute({
+        ...client,
+        confirmPassword: 'error password',
+      });
+    }).rejects.toThrow(Error);
+  });
 });
