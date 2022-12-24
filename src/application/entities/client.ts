@@ -1,7 +1,6 @@
 import { randomUUID } from 'node:crypto';
 import { Replace } from 'src/helpers/Replace';
 import { ClientProps } from './abstract-client';
-import { hash } from 'bcrypt';
 
 export class Client extends ClientProps {
   private _id: string;

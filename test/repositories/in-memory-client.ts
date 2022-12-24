@@ -11,4 +11,8 @@ export class InMemoryClientRepository implements IClientRepository {
   async findByID(id: string): Promise<Client | null> {
     return this.clients.find(client => client.id === id);
   }
+
+  async findByUsername(username: string): Promise<Client | null> {
+    return this.clients.find(client => client.username === username);
+  }
 }
