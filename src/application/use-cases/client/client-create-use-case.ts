@@ -1,5 +1,6 @@
 import { Client } from '../../entities/client';
 import { IClientRepository } from '../../repositories/client-repository';
+import { hash } from 'bcrypt';
 
 interface ClientCreateRequest {
   username: string;
@@ -25,10 +26,12 @@ export class ClientCreate {
       throw new Error("Password didn't match.");
     }
 
+    const hashedPassword = await hash(password, 5);
+
     const client = new Client({
       firstName,
       lastName,
-      password,
+      password: hashedPassword,
       phone,
       username,
     });
