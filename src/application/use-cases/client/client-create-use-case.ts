@@ -29,7 +29,6 @@ export class ClientCreate {
       firstName,
       lastName,
       password,
-      confirmPassword,
       phone,
       username,
     });
