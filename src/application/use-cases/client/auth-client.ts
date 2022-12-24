@@ -1,6 +1,6 @@
-import { IClientRepository } from 'src/application/repositories/client-repository';
 import { compare } from 'bcrypt';
 import { sign } from 'jsonwebtoken';
+import { IClientRepository } from '../../repositories/client-repository';
 import { inject, injectable } from 'tsyringe';
 
 interface AuthClientUseCaseRequest {

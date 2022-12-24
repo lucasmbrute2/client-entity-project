@@ -1,5 +1,5 @@
 import { Request, Response } from 'express';
-import { AuthClientUseCase } from 'src/application/use-cases/client/auth-client';
+import { AuthClientUseCase } from '../../../application/use-cases/client/auth-client';
 import { container } from 'tsyringe';
 
 export class ClientAuthController {
