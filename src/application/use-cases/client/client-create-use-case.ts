@@ -4,6 +4,7 @@ import { IClientRepository } from '../../repositories/client-repository';
 interface ClientCreateRequest {
   username: string;
   password: string;
+  confirmPassword: string;
   firstName: string;
   lastName: string;
   phone: string;
@@ -17,12 +18,18 @@ export class ClientCreate {
   constructor(private clientRepository: IClientRepository) {}
 
   async execute(request: ClientCreateRequest): Promise<ClientCreateResponse> {
-    const { firstName, lastName, password, phone, username } = request;
+    const { firstName, lastName, password, phone, username, confirmPassword } =
+      request;
+
+    if (password !== confirmPassword) {
+      throw new Error("Password didn't match.");
+    }
 
     const client = new Client({
       firstName,
       lastName,
       password,
+      confirmPassword,
       phone,
       username,
     });
