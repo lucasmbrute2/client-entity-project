@@ -1,17 +1,28 @@
 import { makeClient } from 'test/factories/client-factory';
-import { describe, expect, it } from 'vitest';
+import { beforeEach, describe, expect, it } from 'vitest';
 import { InMemoryClientRepository } from '../../../../test/repositories/in-memory-client';
 import { ClientCreate } from './client-create-use-case';
 
+let clientRepository: InMemoryClientRepository;
+let clientCreateUseCase: ClientCreate;
+
 describe('Client creation', () => {
-  it('should be able to create a clinet', async () => {
-    const clientRepository = new InMemoryClientRepository();
-    const clientCreateUseCase = new ClientCreate(clientRepository);
+  beforeEach(() => {
+    clientRepository = new InMemoryClientRepository();
+    clientCreateUseCase = new ClientCreate(clientRepository);
+  });
+
+  it('should be able to create a client', async () => {
     const olderLength = clientRepository.clients.length;
 
     const client = makeClient();
-    await clientCreateUseCase.execute(client);
+    await clientCreateUseCase.execute({
+      ...client,
+      confirmPassword: client.password,
+    });
 
     expect(clientRepository.clients).toHaveLength(olderLength + 1);
   });
+
+  it('should not be able to create a user with differents passwords', async () => {});
 });
