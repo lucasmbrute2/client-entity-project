@@ -1,6 +1,7 @@
 import { randomUUID } from 'node:crypto';
 import { Replace } from 'src/helpers/Replace';
 import { ClientProps } from './abstract-client';
+import { hash } from 'bcrypt';
 
 export class Client extends ClientProps {
   private _id: string;
@@ -12,7 +13,6 @@ export class Client extends ClientProps {
     this.firstName = props.firstName;
     this.lastName = props.lastName;
     this.password = props.password;
-    this.confirmPassword = props.confirmPassword;
     this.phone = props.phone;
     this.username = props.username;
   }

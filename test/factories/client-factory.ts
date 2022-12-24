@@ -8,7 +8,6 @@ export function makeClient(override?: Override): Client {
     firstName: 'Lucas',
     lastName: 'Dantas',
     password: 'Adkad!321321',
-    confirmPassword: 'Adkad!321321',
     phone: '31975464383',
     username: 'lucasmbrute2',
     ...override,
