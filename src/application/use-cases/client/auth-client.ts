@@ -1,6 +1,7 @@
 import { IClientRepository } from 'src/application/repositories/client-repository';
 import { compare } from 'bcrypt';
 import { sign } from 'jsonwebtoken';
+import { inject, injectable } from 'tsyringe';
 
 interface AuthClientUseCaseRequest {
   username: string;
@@ -11,8 +12,12 @@ interface AuthClientUseCaseResponse {
   token: string;
 }
 
+@injectable()
 export class AuthClientUseCase {
-  constructor(private clientRepository: IClientRepository) {}
+  constructor(
+    @inject('ClientRepository')
+    private clientRepository: IClientRepository
+  ) {}
 
   async execute(
     data: AuthClientUseCaseRequest

@@ -1,6 +1,7 @@
 import { Client } from '../../entities/client';
 import { IClientRepository } from '../../repositories/client-repository';
 import { hash } from 'bcrypt';
+import { inject, injectable } from 'tsyringe';
 
 interface ClientCreateRequest {
   username: string;
@@ -15,8 +16,12 @@ interface ClientCreateResponse {
   client: Client;
 }
 
+@injectable()
 export class ClientCreate {
-  constructor(private clientRepository: IClientRepository) {}
+  constructor(
+    @inject('ClientRepository')
+    private clientRepository: IClientRepository
+  ) {}
 
   async execute(request: ClientCreateRequest): Promise<ClientCreateResponse> {
     const { firstName, lastName, password, phone, username, confirmPassword } =
