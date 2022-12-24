@@ -12,6 +12,7 @@ export class Client extends ClientProps {
     this.firstName = props.firstName;
     this.lastName = props.lastName;
     this.password = props.password;
+    this.confirmPassword = props.confirmPassword;
     this.phone = props.phone;
     this.username = props.username;
   }
