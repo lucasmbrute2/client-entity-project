@@ -3,7 +3,8 @@ import * as dotenv from 'dotenv';
 dotenv.config();
 import express from 'express';
 import { createConnection } from '../infra/database/typeorm/data-source';
-import { router } from '../infra/http/routes/index';
+import '../infra/container';
+import { router } from '../infra/http/routes';
 
 const app = express();
 app.use(express.json());
