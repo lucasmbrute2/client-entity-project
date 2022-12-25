@@ -1,4 +1,4 @@
-import { Client } from 'src/application/entities/client';
+import { Client } from '../../../../application/entities/client';
 import { IClientRepository } from 'src/application/repositories/client-repository';
 import { Repository } from 'typeorm';
 import { AppDataSource } from '../data-source';
